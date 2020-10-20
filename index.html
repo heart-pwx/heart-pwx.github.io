@@ -156,30 +156,27 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-我的第一个博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-java.util.List的sublist()" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/19/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/">我的第一篇博客</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/19/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2020-10-19T02:13:37.958Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-19</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h1><h2 id="二级"><a href="#二级" class="headerlink" title="二级"></a>二级</h2><h3 id="三级"><a href="#三级" class="headerlink" title="三级"></a>三级</h3><h4 id="四级"><a href="#四级" class="headerlink" title="四级"></a>四级</h4><h5 id="五级"><a href="#五级" class="headerlink" title="五级"></a>五级</h5><h6 id="六级"><a href="#六级" class="headerlink" title="六级"></a>六级</h6><p> 正文直接输入就可以使用</p>
-        
-          <a class="article-more-a" href="/2020/10/19/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/#more">more >></a>
-        
+        <h1 id="快速删除List中的数据"><a href="#快速删除List中的数据" class="headerlink" title="快速删除List中的数据"></a>快速删除List中的数据</h1><p>  List<E>subList(int fromIndex,int toIndex)，该方法返回原有集合的从fromIndex到toIndex之间的一部分数据，包含fromIndex，不包含toIndex，组成一个新的集合，同时这两个集合之间有关联。</p>
+<h3 id="使用中问题："><a href="#使用中问题：" class="headerlink" title="使用中问题："></a>使用中问题：</h3><p>1：如果对原来的list和返回的list做不涉及到list的大小的修改，都会影响到彼此对方。（非结构性修改）</p>
+<p>2：如果改变原来的list的大小，不包括返回的子list导致的改变。父list的修改会导致返回子list的失效。（结构性修改）</p>
+<h3 id="证实："><a href="#证实：" class="headerlink" title="证实："></a>证实：</h3><h4 id="问题一：非结构性修改"><a href="#问题一：非结构性修改" class="headerlink" title="问题一：非结构性修改"></a>问题一：非结构性修改</h4><p>   原始数据</p>
+<p><img src="http://m.qpic.cn/psc?/V52fwVaK3W1L5n288plk2k0L1a1mUPq3/TmEUgtj9EK6.7V8ajmQrEIgUCc7nyMK6mtXu7V3MNIs8myP0cXCCp83caAYP20o2LFHj70.zhwNfjI52TeWZByVWEPTWne9riQZ2aXfnxsM!/b&bo=BwJDAAAAAAADF3Q!&rf=viewer_4&t=5" alt="avatar"></p>
+<p>   parentList返回值</p>
+<p>   <img src="http://m.qpic.cn/psc?/V52fwVaK3W1L5n288plk2k0L1a1mUPq3/TmEUgtj9EK6.7V8ajmQrEPE*1T6E7c5kxWM8iFoYDu8SgJRlMGXWxU2AnO1BUXSkESm8tT2U5Xxo4f9DnVZ2.U2dc8vjjoSQs*GgWFHWNek!/b&bo=dwKyAAAAAAADF*U!&rf=viewer_4&t=5" alt="avatar"></p>
+<p>  subList()方法截取</p>
+<p><img src="http://m.qpic.cn/psc?/V52fwVaK3W1L5n288plk2k0L1a1mUPq3/TmEUgtj9EK6.7V8ajmQrEMqhP8REBu.3dY6WdpthvZXl8CcRbIsLbPQ1F5bF5Jaqu4wjqIACP25FjGE*A6M4Zb7Ft82YbIz0JTNPt3.0FmU!/b&bo=FwPxAQAAAAADF9Y!&rf=viewer_4&t=5" alt="avatar"></p>
+<p>截取后修改子元素，父集合也会跟着改变。</p>
+<h4 id="问题二：结构性修改"><a href="#问题二：结构性修改" class="headerlink" title="问题二：结构性修改"></a>问题二：结构性修改</h4><h5 id="1-1-子list操作-结构性修改"><a href="#1-1-子list操作-结构性修改" class="headerlink" title="1.1 子list操作-结构性修改"></a>1.1 子list操作-结构性修改</h5><p><img src="http://m.qpic.cn/psc?/V52fwVaK3W1L5n288plk2k0L1a1mUPq3/TmEUgtj9EK6.7V8ajmQrEDy4*yxLeRc2mYrKfLpYh9SJAseo9UQqhMOFPuGTAOB0tP3NFOFbnlzaGx5iXCtE9xSMfFNrWYIUpyTlOsWakRQ!/b&bo=UQM0AgAAAAADF1Y!&rf=viewer_4&t=5" alt="avatar"></p>
+<p>sonlist发生结构性修改（sonlist.add(“new 3”)）后，父list也跟着改变。</p>
+<h5 id="1-2-父list操作-结构性修改"><a href="#1-2-父list操作-结构性修改" class="headerlink" title="1.2 父list操作-结构性修改"></a>1.2 父list操作-结构性修改</h5><p><img src="http://m.qpic.cn/psc?/V52fwVaK3W1L5n288plk2k0L1a1mUPq3/TmEUgtj9EK6.7V8ajmQrEAwbI7xW4Qcbk9Kp9thtLoUlBa4Bs1CV8NqQMk5Jq61Z06JEBI2J*AvWjCqi9LK8nASq3hSrwIo1IZbKrkXELy0!/b&bo=CQUoAgAAAAADFxQ!&rf=viewer_4&t=5" alt="avatar"></p>
+<p>parentList发生结构性改变（parentList.add(5)）后，子list会抛出异常。</p>
+<h4 id="list-subList-from-to-clear"><a href="#list-subList-from-to-clear" class="headerlink" title="list.subList(from,to).clear"></a>list.subList(from,to).clear</h4><p>处理list中的数据，如果部分数据不再需要，可以用clear()清除。</p>
+
       
 
       
@@ -191,7 +188,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/19/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/10/20/java.util.List%E7%9A%84sublist()/">展开全文 >></a>
         </p>
       
 
